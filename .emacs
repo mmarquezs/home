@@ -19,7 +19,31 @@
 (key-chord-mode 1)  
 (require 'evil-leader)
 (global-evil-leader-mode)
+;; (require 'auto-complete)
+;; (global-auto-complete-mode t)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/marcmarquez/.emacs.d/elpa/auto-complete-20*/dict")
+(ac-config-default)
+(require 'yasnippet)
+(yas-global-mode 1)
+(require 'auto-yasnippet)
+(global-set-key (kbd "H-w") #'aya-create)
+(global-set-key (kbd "H-y") #'aya-expand)
 
+;; (when (require 'auto-complete nil t)
+;;   (require 'auto-complete-yasnippet)
+;;   (require 'auto-complete-python)
+;;   (require 'auto-complete-css) 
+;;   (require 'auto-complete-cpp)  
+;;   (require 'auto-complete-emacs-lisp)  
+;;   (require 'auto-complete-semantic)  
+;;   (require 'auto-complete-gtags)
+
+;;   (global-auto-complete-mode t)
+;;   (setq ac-auto-start 3)
+;;   (setq ac-dwim t)
+;;   (set-default 'ac-sources '(ac-source-yasnippet ac-source-abbrev ac-source-words-in-buffer ac-source-files-in-current-dir ac-source-symbols))
+  
 ;;Disable top menu bar
 (menu-bar-mode -99)
 
