@@ -1,0 +1,38 @@
+[global_config]
+  borderless = True
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#2d2458"
+  title_receive_bg_color = "#2e3f4c"
+  title_transmit_bg_color = "#2d2458"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#3b3b3b"
+    background_darkness = 0.83
+    background_image = None
+    background_type = transparent
+    cursor_color = "#cccccc"
+    font = envypn 10
+    foreground_color = "#a8a8a8"
+    palette = "#000000:#f78d8c:#a8d3a9:#ffd479:#78aad6:#d6acd6:#76d4d6:#ffffff:#000000:#f78d8c:#a8d3a9:#ffd479:#78aad6:#d6acd6:#76d4d6:#ffffff"
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[tomorrow-night]]
+    background_color = "#1d1f21"
+    background_image = None
+    cursor_color = "#c5c8c6"
+    foreground_color = "#c5c8c6"
+    palette = "#000000:#912226:#778900:#ae7b00:#1d2594:#682a9b:#2b6651:#929593:#666666:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#ecebec"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
