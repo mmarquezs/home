@@ -1,0 +1,6 @@
+#-*- coding: utf-8 -*-
+import locale
+from time import time, strftime
+import subprocess
+clockstr = " " + strftime("%A %-d. %B %X KW%V")
+print(clockstr);
