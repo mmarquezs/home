@@ -29,6 +29,15 @@
 (require 'auto-yasnippet)
 (global-set-key (kbd "H-w") #'aya-create)
 (global-set-key (kbd "H-y") #'aya-expand)
+;;Enable ditta in org-mode
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+  '((ditaa . t) ; this line activates ditaa
+    (plantuml . t)))
+(setq org-plantuml-jar-path
+      (expand-file-name "/usr/share/emacs/24.5/lisp/contrib/scripts/plantuml.jar"))
+
+
 
 ;; (when (require 'auto-complete nil t)
 ;;   (require 'auto-complete-yasnippet)

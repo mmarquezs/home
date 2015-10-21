@@ -82,7 +82,9 @@ DEFAULT_USER="marc"
 alias repairkeyboard="setxkbmap $(setxkbmap -query | grep "^layout:" | awk -F ": *" '{print $2}') && killall synergyc && synergyc 192.168.1.40" 
 alias emacsd="emacsclient -t"
 alias emacs="emacs -nw"
+alias beep="aplay --quiet /usr/share/sounds/speech-dispatcher/test.wav"
 source ~/.zshrc.d/antigen/antigen.zsh
+
 
 
 # Load the oh-my-zsh's library.
