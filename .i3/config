@@ -202,15 +202,26 @@ exec --no-startup-id dunst
 exec udiskie
 
 exec terminator
+exec blueman
 # ****************************************************************
 # * Key Bindings
 # ****************************************************************
 
 # Audio
-bindsym XF86AudioRaiseVolume exec volume_ctl up
-bindsym XF86AudioLowerVolume exec volume_ctl down
-bindsym XF86AudioMute exec volume_ctl mute
-bindsym Print exec printscreen
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.00_1E_7C_2D_04_D7 +10% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.00_1E_7C_2D_04_D7 -10%
+bindsym XF86AudioPlay exec --no-startup-id bash $HOME/bin/key-XF86AudioPlay.sh
+bindsym XF86AudioPause exec --no-startup-id bash $HOME/bin/key-XF86AudioPlay.sh
+
+bindsym XF86AudioNext --release exec --no-startup-id sh $HOME/bin/key-XF86AudioNext.sh
+bindsym XF86AudioPrev --release exec --no-startup-id sh $HOME/bin/key-XF86AudioPrev.sh
+# bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+# bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+# bindsym XF86AudioMute exec amixer -q set Master toggle
+# bindsym XF86AudioRaiseVolume exec volume_ctl up
+# bindsym XF86AudioLowerVolume exec volume_ctl down
+# bindsym XF86AudioMute exec volume_ctl mute
+# bindsym Print exec printscreen
 
 # Applications
 bindsym XF86Calculator exec speedcrunch
