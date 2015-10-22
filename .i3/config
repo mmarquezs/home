@@ -224,6 +224,7 @@ for_window [class="Erlang"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class=Gucharmap] floating enable
 for_window [title="ranger-opened-by-app"] floating enable
+for_window [class="pavucontrol"] floating enable
 assign [class="Firefox"] $WS2
 assign [class="Google-chrome-stable"] $WS2
 assign [class="libreoffice"] $WS4
