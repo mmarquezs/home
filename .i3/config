@@ -235,12 +235,12 @@ for_window [class="Erlang"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class=Gucharmap] floating enable
 for_window [title="ranger-opened-by-app"] floating enable
-for_window [class="pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable
 assign [class="Firefox"] $WS2
 assign [class="Google-chrome-stable"] $WS2
 assign [class="libreoffice"] $WS4
 assign [title="LibreOffice"] $WS4
-assign [class="Steam"] $WS5
+assign [title="Steam"] $WS5
 
 
 #Disable titlebars
