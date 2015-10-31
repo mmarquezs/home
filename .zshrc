@@ -51,9 +51,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/$USER/bin:/home/$USER/.gem/ruby/2.1.0/bin:/usr/local/bin:/home/$USER/bin:/home/$USER/.gem/ruby/2.2.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="$HOME/bin:$HOME/.gem/ruby/2.1.0/bin:/usr/local/bin:$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
+export GOPATH="$HOME/.go"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -81,7 +81,7 @@ export PATH="/home/$USER/bin:/home/$USER/.gem/ruby/2.1.0/bin:/usr/local/bin:/hom
 DEFAULT_USER="marc"
 alias repairkeyboard="setxkbmap $(setxkbmap -query | grep "^layout:" | awk -F ": *" '{print $2}') && killall synergyc && synergyc 192.168.1.40" 
 alias emacsd="emacsclient -t"
-alias emacs="emacs -nw"
+#alias emacs="emacs -nw"
 alias beep="aplay --quiet /usr/share/sounds/speech-dispatcher/test.wav"
 source ~/.zshrc.d/antigen/antigen.zsh
 

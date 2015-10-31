@@ -24,6 +24,10 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "/home/marcmarquez/.emacs.d/elpa/auto-complete-20*/dict")
 (ac-config-default)
+(require 'go-autocomplete)
+(require 'go-eldoc)
+    (add-hook 'go-mode-hook 'go-eldoc-setup)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 (require 'yasnippet)
 (yas-global-mode 1)
 (require 'auto-yasnippet)
@@ -36,7 +40,7 @@
     (plantuml . t)))
 (setq org-plantuml-jar-path
       (expand-file-name "/usr/share/emacs/24.5/lisp/contrib/scripts/plantuml.jar"))
-
+(require 'erlang-start)
 
 
 ;; (when (require 'auto-complete nil t)

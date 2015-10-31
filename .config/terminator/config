@@ -19,7 +19,6 @@
     background_color = "#3b3b3b"
     background_darkness = 0.83
     background_image = None
-    background_type = transparent
     cursor_color = "#cccccc"
     font = envypn 10
     foreground_color = "#a8a8a8"

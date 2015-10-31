@@ -10,7 +10,7 @@ class Py3status:
 		response['full_text'] = clockstr
 		response['cached_until'] = time() + 1
 		return (0, response)
-	def on_click(self, json, i3status_config, event):
-		if event['button'] == 1:
+#	def on_click(self, json, i3status_config, event):
+#		if event['button'] == 1:
 			#subprocess.Popen(["chromium"])
-			subprocess.Popen(["killall", "-USR1", "py3status"])
+			#subprocess.Popen(["killall", "-USR1", "py3status"])
