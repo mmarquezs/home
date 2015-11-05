@@ -121,7 +121,11 @@ git_custom_status() {
     fi
 }
 #####
+# Bindings
+#####
 
+bindkey "\C-w" kill-region
+bindkey "\e^?" backward-kill-word
 
 
 # bindkey -v
