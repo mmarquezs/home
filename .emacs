@@ -21,8 +21,8 @@
 (global-evil-leader-mode)
 ;; (require 'auto-complete)
 ;; (global-auto-complete-mode t)
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/home/marcmarquez/.emacs.d/elpa/auto-complete-20*/dict")
+;;(require 'auto-complete-config)
+;;(add-to-list 'ac-dictionary-directories "/home/marcmarquez/.emacs.d/elpa/auto-complete-20*/dict")
 (ac-config-default)
 (require 'go-autocomplete)
 (require 'go-eldoc)
@@ -45,22 +45,44 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+(require 'company)                                   ; load company mode
+(require 'company-web-html)
+(add-to-list 'company-backends 'company-web-html)
+(add-hook 'after-init-hook 'global-company-mode)
+
+;;Fix so company works with yasnippet
+  (defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+
+  (defun do-yas-expand ()
+    (let ((yas/fallback-behavior 'return-nil))
+      (yas/expand)))
+
+  (defun tab-indent-or-complete ()
+    (interactive)
+    (if (minibufferp)
+        (minibuffer-complete)
+      (if (or (not yas/minor-mode)
+              (null (do-yas-expand)))
+          (if (check-expansion)
+              (company-complete-common)
+            (indent-for-tab-command)))))
+
+(global-set-key [tab] 'tab-indent-or-complete)
+
+(add-hook 'web-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-web-html))
+                          (company-mode t)))
 
 
-;; (when (require 'auto-complete nil t)
-;;   (require 'auto-complete-yasnippet)
-;;   (require 'auto-complete-python)
-;;   (require 'auto-complete-css) 
-;;   (require 'auto-complete-cpp)  
-;;   (require 'auto-complete-emacs-lisp)  
-;;   (require 'auto-complete-semantic)  
-;;   (require 'auto-complete-gtags)
 
-;;   (global-auto-complete-mode t)
-;;   (setq ac-auto-start 3)
-;;   (setq ac-dwim t)
-;;   (set-default 'ac-sources '(ac-source-yasnippet ac-source-abbrev ac-source-words-in-buffer ac-source-files-in-current-dir ac-source-symbols))
-  
+
+
 ;;Disable top menu bar
 (menu-bar-mode -99)
 
