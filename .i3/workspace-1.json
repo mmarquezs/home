@@ -1,6 +1,4 @@
-// vim:ts=4:sw=4:et
 {
-    // splitv split container with 2 children
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
@@ -8,7 +6,6 @@
     "type": "con",
     "nodes": [
         {
-            // splith split container with 1 children
             "border": "normal",
             "floating": "auto_off",
             "layout": "splith",
@@ -29,10 +26,7 @@
                     "percent": 1,
                     "swallows": [
                        {
-                        "class": "^Terminator$",
-                       // "instance": "^terminator$",
-                       // "title": "^i3\\-save\\-tree\\ \\-\\-workspace\\ 1\\ \\>\\ \\~\\/\\.i3\\/workspace\\-1\\.json$",
-                       // "transient_for": "^$"
+                        "class": "^Terminator$"
                        }
                     ],
                     "type": "con"
@@ -53,10 +47,7 @@
             "percent": 0.9,
             "swallows": [
                {
-                "class": "^Emacs$",
-               // "instance": "^emacs$",
-               // "title": "^emacs\\@GLaDOS$",
-               // "transient_for": "^$"
+                "class": "^Emacs$"
                }
             ],
             "type": "con"
@@ -65,7 +56,6 @@
 }
 
 {
-    // stacked split container with 2 children
     "border": "normal",
     "floating": "auto_off",
     "layout": "stacked",
@@ -86,10 +76,7 @@
             "percent": 0.5,
             "swallows": [
                {
-                "class": "^Zathura$",
-               // "instance": "^zathura$",
-               // "title": "^\\/tmp\\/pract4\\.pdf$",
-               // "transient_for": "^$"
+                "class": "^Zathura$"
                }
             ],
             "type": "con"
@@ -108,11 +95,7 @@
             "percent": 0.5,
             "swallows": [
                {
-                "class": "^Firefox$",
-               // "instance": "^Navigator$",
-               // "title": "^Pestanya\\ nova\\ \\-\\ Mozilla\\ Firefox$",
-               // "transient_for": "^$",
-               // "window_role": "^browser$"
+                "class": "^Firefox$"
                }
             ],
             "type": "con"
