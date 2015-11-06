@@ -4,7 +4,7 @@
 #                                  VARIABLES                                  #
 ###############################################################################
 
-#set $USER marcmarquez
+set $USER marcmarquez
 set $mod Mod4			# mod key set as Meta key, aka Windows key.
 set $WS1 "1:   TERM"		# setting workspaces names.
 set $WS2 "2:   WEB"
