@@ -1,0 +1,168 @@
+#!nobracket
+
+###############################################################################
+#                                  VARIABLES                                  #
+###############################################################################
+
+#set $USER marcmarquez
+set $mod Mod4			# mod key set as Meta key, aka Windows key.
+set $WS1 "1:   TERM"		# setting workspaces names.
+set $WS2 "2:   WEB"
+set $WS3 "3:   DATA"
+set $WS4 "4:   WORK"
+set $WS5 "5:  GAMES"
+set $mv 10px			# amount to resize windows (also used for how far to
+set $mvppt 2ppt            	# move floating windows with mod+shift+hjkl)
+font pango:Termsyn, Icons 8 	# font with some cool icons for the workspaces names.
+floating_modifier $mod		# allows to move floting windows with $mod+Mouse.
+
+
+gaps inner 15
+gaps outer -1
+
+###############################################################################
+#                                  KEY BINDINGS                                  #
+###############################################################################
+
+bindsym $mod+Return exec 3-sensible-terminal # start a terminal (more info: http://goo.gl/SeUInM )
+bindsym $mod+Shift+q kill	# kills focused window (not forcefully)
+# start dmenu
+bindsym $mod+d exec dmenu_run -b -i -nb "#002b36" -nf "#eee8d5" -sb "#cb4b16" -sf "#fdf6e3" -fn "-*-dejavu sans-medium-r-normal--10-*-*-*-*-*-iso8859-1"  "$@"
+#Changes window focus Vim-Style and "Arrows-Style".
+bindsym $mod+!!<h,j,k,l,Left,Down,Up,Right> \ 
+  focus !!<left,down,up,right,left,down,up,right>
+bindsym $mod+f fullscreen			# fullscreen mode for a window.
+bindsym $mod+!!s,w,e \ 
+  layout !!<stacking,tabbed,toggle>
+bindsym $mod+Shift+space floating toggle 	# toggle tiling / floating
+bindsym $mod+space focus mode_toggle 		# change focus between tiling / floating windows
+bindsym $mod+a focus parent 			# focus the parent container
+# switch to workspace
+bindsym $mod+!!1!1..5 \ 
+	workspace $WS!!1!1..5
+bindsym $mod+!!1!6..9,0 \
+	workspace !!1!6..10
+# EMERGENCY BUTTON (because....Why not?)
+bindsym Pause workspace $WS2 
+
+# Move focused container to workspace
+bindsym $mod+Shift+!!1!1..5 \
+	move container to workspace $WS!!1!1..5
+bindsym $mod+Shift+!!1!6..9,0 \
+	move container to workspace !!1!6..10
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+###############################################################################
+#                                    MODES                                    #
+###############################################################################
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym !!h,j,k,l,Left,Down,Up,Right resize \
+          !!<shrink width,grow height,shrink height,grow width> $mv or $mvppt
+
+        bindsym !!Escape,$mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+mode "move" {
+     bindsym !!h,j,k,l,Left,Down,Up,Right move \
+     	     !!<left,down,up,right> $mv
+     bindsym !!Escape,$mod+m mode "default"
+}
+bindsym $mod+m focus floating; mode "move"
+
+bindsym XF86Calculator exec speedcrunch
+
+# Audio
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.00_1E_7C_2D_04_D7 +10% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.00_1E_7C_2D_04_D7 -10%
+bindsym XF86AudioPlay exec --no-startup-id bash $HOME/bin/key-XF86AudioPlay.sh
+bindsym XF86AudioPause exec --no-startup-id bash $HOME/bin/key-XF86AudioPlay.sh
+
+bindsym XF86AudioNext --release exec --no-startup-id sh $HOME/bin/key-XF86AudioNext.sh
+bindsym XF86AudioPrev --release exec --no-startup-id sh $HOME/bin/key-XF86AudioPrev.sh
+# bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+# bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+# bindsym XF86AudioMute exec amixer -q set Master toggle
+# bindsym XF86AudioRaiseVolume exec volume_ctl up
+# bindsym XF86AudioLowerVolume exec volume_ctl down
+# bindsym XF86AudioMute exec volume_ctl mute
+# bindsym Print exec printscreen
+
+###############################################################################
+#                                    BAR CONF.                                #
+###############################################################################
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  tray_output primary
+  position          top
+  #status_command i3status
+  status_command py3status -s -i ~/.i3/py3status -n 10
+  colors {
+    separator #002b36
+    background #002b36
+    statusline #268bd2
+    #focused_workspace #fdf6e3 #859900 #fdf6e3
+    active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    focused_workspace #fdf6e3 #859900 #fdf6e3
+    #inactive_workspace #586e75 #93a1a1 #002b36
+    inactive_workspace #586e75 #eee8d5 #002b36
+    urgent_workspace #d33682 #d33682 #fdf6e3
+  }
+}
+
+client.focused #859900 #859900 #fdf6e3 #859900
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
+###############################################################################
+#                                    STARTUP                               #
+###############################################################################
+
+exec --no-startup-id !!<\
+     udiskie,\
+     clipit,\
+     compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8,\
+     /home/marcmarquez/bin/wallpaper-reddit,\
+     cpulimit -l 10 dropbox,\
+     emacs --daemon,\
+     gmusicfs $HOME/gmusic,\
+     mpd $HOME/.config/mpd/mpd.conf,\
+     volwheel,\
+     nm-applet,\
+     synergys,\
+     dunst,\
+     udiskie,\
+     blueman,\
+     "i3-msg 'workspace 1:   TERM; append_layout /home/$USER/.i3/workspace-1.json'",\
+     firefox,\
+     terminator,\
+     zathura
+>
+
+###############################################################################
+#                                    WINDOW RULES                               #
+###############################################################################
+for_window [class="Vlc"] floating enable
+for_window [class="Erlang"] floating enable
+for_window [class="pavucontrol"] floating enable
+for_window [class=Gucharmap] floating enable
+for_window [title="ranger-opened-by-app"] floating enable
+for_window [class="Pavucontrol"] floating enable
+assign [title="Firefox"] $WS2
+assign [class="Google-chrome-stable"] $WS2
+assign [class="libreoffice"] $WS4
+assign [title="LibreOffice"] $WS4
+assign [title="Steam"] $WS5
+#Disable titlebars
+for_window [class="^.*"] border pixel 0
+
+
+
