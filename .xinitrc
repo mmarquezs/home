@@ -17,7 +17,7 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
-exec i3bang
+#exec i3bang
 exec i3
 exec sleep 30
 exec setxkbmap -model pc104 -layout es
