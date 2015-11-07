@@ -127,24 +127,20 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 ###############################################################################
 
 exec --no-startup-id !!<\
+     "i3-msg 'workspace 1:   TERM; append_layout /home/$USER/.i3/workspace-1.json'",\
+     firefox,\
      udiskie,\
-     clipit,\
      compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8,\
      /home/marcmarquez/bin/wallpaper-reddit,\
      cpulimit -l 10 dropbox,\
      emacs --daemon,\
-     gmusicfs $HOME/gmusic,\
-     mpd $HOME/.config/mpd/mpd.conf,\
      volwheel,\
      nm-applet,\
      synergys,\
      dunst,\
-     udiskie,\
      blueman,\
-     "i3-msg 'workspace 1:   TERM; append_layout /home/$USER/.i3/workspace-1.json'",\
-     firefox,\
      terminator,\
-     zathura
+     zathura,\
 >
 
 ###############################################################################

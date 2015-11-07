@@ -80,7 +80,7 @@ export GOPATH="$HOME/.go"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 DEFAULT_USER="marcmarquez"
 alias repairkeyboard="setxkbmap $(setxkbmap -query | grep "^layout:" | awk -F ": *" '{print $2}') && killall synergyc && synergyc 192.168.1.40" 
-alias emacsd="emacsclient -c a emacs"
+alias emacsd="nohup emacsclient -c a emacs > /dev/null 2>&1 &"
 #alias emacs="emacs -nw"
 alias beep="aplay --quiet /usr/share/sounds/speech-dispatcher/test.wav"
 source ~/.zshrc.d/antigen/antigen.zsh
