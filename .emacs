@@ -45,6 +45,8 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+(require 'ido)
+(ido-mode t)
 (require 'company)                                   ; load company mode
 (require 'company-web-html)
 (add-to-list 'company-backends 'company-web-html)
