@@ -2,7 +2,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/auto-yasnippet
-;; Package-Version: 20150925.1557
+;; Package-Version: 20151105.1848
 ;; Version: 0.3
 ;; Package-Requires: ((yasnippet "0.8.0"))
 
@@ -132,18 +132,21 @@ It uses a different marker, which is `aya-marker-one-line'.
 You can use it to quickly generate one-liners such as
 menu.add_item(spamspamspam, \"spamspamspam\")"
   (interactive)
-  (let* ((beg (line-beginning-position))
-         (end (line-end-position))
-         (line (buffer-substring-no-properties beg (point))))
-    (when (string-match "\\$" line)
-      (setq line
-            (concat
-             (replace-regexp-in-string "\\$" "$1" line)
-             "$1"
-             (buffer-substring-no-properties (point) end)))
-      (delete-region beg end)
-      (setq aya-current line)
-      (yas-expand-snippet line))))
+  (when aya-marker-one-line
+    (let* ((beg (line-beginning-position))
+           (end (line-end-position))
+           (line (buffer-substring-no-properties beg (point)))
+           (re (regexp-quote aya-marker-one-line)))
+      (when (and (not (string-match (regexp-quote aya-marker) line))
+                 (string-match re line))
+        (setq line
+              (concat
+               (replace-regexp-in-string re "$1" line)
+               (if (= (point) end) "" "$1")
+               (buffer-substring-no-properties (point) end)))
+        (delete-region beg end)
+        (setq aya-current line)
+        (yas-expand-snippet line)))))
 
 (defun aya--parse (str)
   "Parse STR."
