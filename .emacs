@@ -46,11 +46,21 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 (require 'ido)
+(require 'flx-ido)
 (ido-mode t)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 (require 'company)                                   ; load company mode
 (require 'company-web-html)
 (add-to-list 'company-backends 'company-web-html)
 (add-hook 'after-init-hook 'global-company-mode)
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;;Fix so company works with yasnippet
   (defun check-expansion ()
@@ -81,9 +91,24 @@
                           (set (make-local-variable 'company-backends) '(company-web-html))
                           (company-mode t)))
 
+;; SQL Postgres test server settings
+
+(setq sql-postgres-login-params
+      '((user :default "postgres")
+	(database :default "postgres")
+	(server :default "172.17.0.1")
+	(port :default 5432)))
+;; Enable trucate on sql
+(add-hook 'sql-interactive-mode-hook
+          (lambda ()
+            (toggle-truncate-lines t)))
 
 
-
+;;Resize windows keybindings
+(global-set-key (kbd "S-C-h") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-l") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-j") 'shrink-window)
+(global-set-key (kbd "S-C-k") 'enlarge-window)
 
 ;;Disable top menu bar
 (menu-bar-mode -99)
