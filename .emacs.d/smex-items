@@ -1,0 +1,25 @@
+
+;; ----- smex-history -----
+(
+ sql-postgres
+ indent-region
+ list-packages
+ ispell-region
+ ispell
+ org-babel-execute-buffer
+ org-babel-execute-src-block
+)
+
+;; ----- smex-data -----
+(
+ (indent-region . 3)
+ (replace-string . 1)
+ (undo-tree-undo . 1)
+ (octave-mode . 1)
+ (org-babel-execute-src-block . 1)
+ (org-babel-execute-buffer . 1)
+ (ispell . 1)
+ (ispell-region . 1)
+ (list-packages . 1)
+ (sql-postgres . 5)
+)
