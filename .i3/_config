@@ -76,6 +76,14 @@ mode "move" {
      bindsym !!Escape,$mod+m mode "default"
 }
 bindsym $mod+m focus floating; mode "move"
+mode "launch" {
+    bindsym !!t,f,e,p,r,s,z \
+    	    exec --no-startup-id run-or-raise \
+	    !!<terminator,firefox,emacs,pcmanfm,radiotray,skype,zathura> \
+	    !!<terminator,firefox,"emacsclient -a '' -c",pcmanfm,radiotray,skype,zathura>
+    bindsym !!Escape,$mod+x mode "default"
+}
+bindsym $mod+x focus floating; mode "launch"
 
 bindsym XF86Calculator exec speedcrunch
 
@@ -142,6 +150,8 @@ exec --no-startup-id !!<\
      blueman,\
      terminator,\
      zathura,\
+     xcape -e 'Control_L=Escape',\
+     unclutter\
 >
 
 ###############################################################################
@@ -158,6 +168,7 @@ assign [class="Google-chrome-stable"] $WS2
 assign [class="libreoffice"] $WS4
 assign [title="LibreOffice"] $WS4
 assign [title="Steam"] $WS5
+assign [class="Pcmanfm"] $WS3
 #Disable titlebars
 for_window [class="^.*"] border pixel 0
 
