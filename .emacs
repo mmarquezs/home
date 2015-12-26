@@ -61,7 +61,7 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
+(elpy-enable)
 ;;Fix so company works with yasnippet
   (defun check-expansion ()
     (save-excursion
@@ -90,6 +90,14 @@
 (add-hook 'web-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-web-html))
                           (company-mode t)))
+
+;;No permissions for your file? Ask sudo and he will give you the power to open it!
+
+(defadvice ido-find-file (after find-file-sudo activate)
+  "Find file as root if necessary."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 ;; SQL Postgres test server settings
 
