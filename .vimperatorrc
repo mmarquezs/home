@@ -1,0 +1,8 @@
+"3.10.1 (created: 2015/08/25 00:41:59)
+
+source! /home/marcmarquez/.vimperatorrc.local
+
+" vim: set ft=vimperator:
+cnoremap jk <Esc>
+inoremap jk <Esc>
+set editor=url2emacs
