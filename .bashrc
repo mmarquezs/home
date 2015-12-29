@@ -659,3 +659,13 @@ export ALTERAOCLSDKROOT="/home/marc/altera/15.0/hld"
 #Cross-compiling
 # PATH="/home/marcmarquez/repositoris/qnapware/openwrt_trunk/staging_dir/host/bin:$PATH"
 # PATH="/home/marcmarquez/repositoris/qnapware/openwrt_trunk/staging_dir/target-arm-openwrt-linux-gnueabi:$PATH"
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+export HOSTNAME
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '

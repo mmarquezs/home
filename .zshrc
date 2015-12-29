@@ -52,6 +52,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="$HOME/bin:$HOME/.gem/ruby/2.1.0/bin:/usr/local/bin:$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.go/bin"
+
+export HOST
 # export MANPATH="/usr/local/man:$MANPATH"
 export GOPATH="$HOME/.go"
 # You may need to manually set your language environment
