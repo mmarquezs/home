@@ -5,7 +5,6 @@
 #                                  VARIABLES                                  #
 ###############################################################################
 
-set $USER marcmarquez
 set $mod Mod4			# mod key set as Meta key, aka Windows key.
 set $WS1 "1:   TERM"		# setting workspaces names.
 set $WS2 "2:   WEB"
@@ -28,7 +27,7 @@ gaps outer -1
 bindsym $mod+Return exec 3-sensible-terminal # start a terminal (more info: http://goo.gl/SeUInM )
 bindsym $mod+Shift+q kill	# kills focused window (not forcefully)
 # start dmenu
-bindsym $mod+d exec dmenu_run -b -i -nb "#002b36" -nf "#eee8d5" -sb "#cb4b16" -sf "#fdf6e3" -fn "-*-dejavu sans-medium-r-normal--10-*-*-*-*-*-iso8859-1"  "$@"
+bindsym $mod+d exec dmenu_run -b -i -nb "#002b36" -nf "#eee8d5" -sb "#cb4b16" -sf "#fdf6e3" -fn "envypn-8"  "$@"
 #Changes window focus Vim-Style and "Arrows-Style".
 bindsym $mod+!!<h,j,k,l,Left,Down,Up,Right> \ 
   focus !!<left,down,up,right,left,down,up,right>
@@ -52,7 +51,7 @@ bindsym $mod+Shift+!!1!1..5 \
 bindsym $mod+Shift+!!1!6..9,0 \
 	move container to workspace !!1!6..10
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec i3bang; reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -87,6 +86,11 @@ bindsym $mod+x focus floating; mode "launch"
 
 bindsym XF86Calculator exec speedcrunch
 
+!?<HOSTNAME=morality
+# Brillantor Monitor
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 
+>
 # Audio
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.00_1E_7C_2D_04_D7 +10% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.00_1E_7C_2D_04_D7 -10%
@@ -109,19 +113,26 @@ bindsym XF86AudioPrev --release exec --no-startup-id sh $HOME/bin/key-XF86AudioP
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  tray_output primary
+!?<HOSTNAME=morality
+	tray_output eDP1
+>
+!?<HOSTNAME=GLaDOS
+	tray_output primary
+>
   position          top
   #status_command i3status
-  status_command py3status -s -i ~/.i3/py3status -n 10
+  status_command py3status -i ~/.i3/py3status -n 10
   colors {
-    separator #002b36
-    background #002b36
+    separator #000000
+    background #2d2d2d
     statusline #268bd2
     #focused_workspace #fdf6e3 #859900 #fdf6e3
-    active_workspace #fdf6e3 #6c71c4 #fdf6e3
-    focused_workspace #fdf6e3 #859900 #fdf6e3
+    #active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    active_workspace #fdf6e3 #455057 #455057
+    focused_workspace #fdf6e3 #586E75 #fdf6e3
     #inactive_workspace #586e75 #93a1a1 #002b36
-    inactive_workspace #586e75 #eee8d5 #002b36
+    #inactive_workspace #586e75 #eee8d5 #002b36
+    inactive_workspace #586e75 #455057 #fdf6e3
     urgent_workspace #d33682 #d33682 #fdf6e3
   }
 }
@@ -151,7 +162,8 @@ exec --no-startup-id !!<\
      terminator,\
      zathura,\
      xcape -e 'Control_L=Escape',\
-     unclutter\
+     unclutter,\
+     synergyc 192.168.1.40\
 >
 
 ###############################################################################
@@ -170,7 +182,7 @@ assign [title="LibreOffice"] $WS4
 assign [title="Steam"] $WS5
 assign [class="Pcmanfm"] $WS3
 #Disable titlebars
-for_window [class="^.*"] border pixel 0
+for_window [class="^(?Erlang$).*"] border pixel 0
 
 
 
