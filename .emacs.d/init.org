@@ -1,0 +1,123 @@
+#+TITLE: init.el
+#+PROPERTY: header-args :tangle yes :results silent
+
+* Initial Setup
+** Setting up MELPA
+
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+#+END_SRC
+
+** Install use-package if missing
+
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+#+END_SRC
+* Global Configs
+
+* General Packages
+
+** Key-Chord
+#+BEGIN_SRC emacs-lisp
+(use-package key-chord
+  :ensure t
+  :config (key-chord-mode 1))
+#+END_SRC
+
+** Evil
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :ensure t
+  :config (evil-mode 1)
+  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
+#+END_SRC
+
+** Evil-Leader-Mode
+#+BEGIN_SRC emacs-lisp
+(use-package evil-leader
+  :ensure t
+  :config (evil-leader-mode)
+  (evil-leader/set-leader "<SPC>"))
+#+END_SRC
+
+** Yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  :ensure t
+  :config (yas-global-mode 1))
+#+END_SRC
+
+** auto-yasnippet
+   #+BEGIN_SRC emacs-lisp
+   (use-package auto-yasnippet
+   :ensure t
+   :config 
+   #+END_SRC
+
+
+** recentf
+   #+BEGIN_SRC emacs-lisp
+   (use-package recentf
+   :ensure t
+   :config (recentf-mode 1)
+   (setq recentf-max-menu-items 25)
+   :bind ("\C-x\ \C-r" . recentf-open-files))
+   #+END_SRC
+
+
+** ido
+   #+BEGIN_SRC emacs-lisp
+   (use-package ido
+   :ensure t
+   :config (ido-mode t)
+   (ido-everywhere 1)
+   (setq ido-enable-flex-matching t)
+   (setq ido-use-faces nil))
+   #+END_SRC
+
+
+** flx-ido
+   #+BEGIN_SRC emacs-lisp
+   (use-package flx-ido
+   :ensure t
+   :config (flx-ido-mode 1))
+   #+END_SRC
+
+
+** company
+   #+BEGIN_SRC emacs-lisp
+   (use-package company
+   :ensure t
+   :config (add-hook 'after-init-hook 'global-company-mode))
+   #+END_SRC
+
+** smex
+   #+BEGIN_SRC emacs-lisp
+   (use-package smex
+   :ensure t
+   :config )
+   #+END_SRC
+
+
+* Language Specific Packages
+
+
+
+
+
+
+
+
+
+(provide 'init)
+;;; init.el ends here
+
+;; Local Variables:
+;; eval: (add-hook 'after-save-hook (lambda ()(org-babel-tangle)) nil t)
+;; End:
