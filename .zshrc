@@ -22,6 +22,7 @@ PATH="/usr/local/sbin:$PATH"
 [ -d "/usr/bin/site_perl/" ] && PATH="/usr/bin/site_perl/:$PATH"
 [ -d "/usr/bin/vendor_perl/" ] && PATH="/usr/bin/vendor_perl/:$PATH"
 [ -d "/usr/bin/core_perl/" ] && PATH="/usr/core_perl/:$PATH"
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.go/bin" ] && PATH="$HOME/.go/bin:$PATH"
 
 export HOST			# Added so it allows i3bang to set a configuration or an other based on the hostname. 
@@ -33,6 +34,8 @@ alias emacsd="nohup emacsclient -ca emacs> /dev/null 2>&1 &" # To start or attac
 alias beep="aplay --quiet /usr/share/sounds/speech-dispatcher/test.wav" # Useful when doing cp, mv etc,.. of a big file and you want an alert when it has finished. Simply add it at the end, "cp foo bar && beep"
 alias t="todo -d $HOME/.todo.cfg"
 alias tw="todo | grep @work"
+alias lgen="python -c 'import sys;import libgenapi;l=libgenapi.Libgenapi(\"http://gen.lib.rus.ec/\");print(l.search(sys.argv[1]))'"
+
 export TODOTXT_DEFAULT_ACTION=ls
 export EDITOR="nohup emacsclient -ca emacs> /dev/null 2>&1 &"
 export ALTERNATE_EDITOR="vim"
