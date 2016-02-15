@@ -53,8 +53,8 @@ antigen bundle last-working-dir
 antigen bundle command-not-found
 
 # Syntax highlighting bundle.
-antigen bundle tarruda/zsh-autosuggestions
-#antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen bundle tarruda/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 #antigen theme robbyrussell
