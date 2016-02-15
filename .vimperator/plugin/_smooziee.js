@@ -28,8 +28,8 @@ var INFO = xml`
   <h3 tag="smooziee_example">Example</h3>
   <p>Set scroll amount is 300px and interval is 10ms.</p>
   <code><ex><![CDATA[
-    let g:smooziee_scroll_amount="300"
-    let g:smooziee_scroll_interval="10"
+    let g:smooziee_scroll_amount="400"
+    let g:smooziee_scroll_interval="20"
   ]]></ex></code>
   <h3 tag="smooziee_API">API</h3>
   <code>smooziee.smoothScrollBy(amount);</code>
