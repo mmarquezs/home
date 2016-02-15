@@ -30,6 +30,9 @@
 ;;Disable  toolbar
 (tool-bar-mode -1)
 
+;; Enable colors on src blocks in org-mode
+(setq org-src-fontify-natively t)
+
 ;; If emacs is run in a terminal, the clipboard- functions have no
 ;; effect. Instead, we use of xsel, see
 ;; http://www.vergenet.net/~conrad/software/xsel/ -- "a command-line
@@ -137,7 +140,8 @@
      (unless (and buffer-file-name
                (file-writable-p buffer-file-name))
        (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-   (setq org-completion-use-ido t))
+   (setq org-completion-use-ido t
+         ido-cannot-complete-command 'ido-next-match))
    #+END_SRC
 
 ** flx-ido
