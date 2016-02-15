@@ -1,6 +1,5 @@
 #+TITLE: init.el
 #+PROPERTY: header-args :tangle yes :results silent
-
 * Initial Setup
 ** Setting up MELPA
 
@@ -21,11 +20,6 @@
 #+END_SRC
 * Global Configs
 #+BEGIN_SRC emacs-lisp
-;;No permissions for your file? Ask sudo and he will give you the power to open it!
-(defadvice ido-find-file (after find-file-sudo activate)
-  "Find file as root if necessary."
-  (unless (and buffer-file-name
-               (file-writable-p buffer-file-name))
 ;; Enable trucate on sql
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
@@ -84,7 +78,6 @@
 #+END_SRC
 
 * General Packages
-
 ** Key-Chord
 #+BEGIN_SRC emacs-lisp
 (use-package key-chord
@@ -121,7 +114,6 @@
    :ensure t)
    #+END_SRC
 
-
 ** recentf
    #+BEGIN_SRC emacs-lisp
    (use-package recentf
@@ -131,7 +123,6 @@
    :bind ("\C-x\ \C-r" . recentf-open-files))
    #+END_SRC
 
-
 ** ido
    #+BEGIN_SRC emacs-lisp
    (use-package ido
@@ -139,25 +130,62 @@
    :config (ido-mode t)
    (ido-everywhere 1)
    (setq ido-enable-flex-matching t)
-   (setq ido-use-faces nil))
+   (setq ido-use-faces nil)
+   ;;No permissions for your file? Ask sudo and he will give you the power to open it!
+   (defadvice ido-find-file (after find-file-sudo activate)
+     "Find file as root if necessary."
+     (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+   (setq org-completion-use-ido t))
    #+END_SRC
-
 
 ** flx-ido
    #+BEGIN_SRC emacs-lisp
    (use-package flx-ido
    :ensure t
-   :config (flx-ido-mode 1))
+   :init (flx-ido-mode 1))
    #+END_SRC
 
+** ido-ubiquitous
+   #+BEGIN_SRC emacs-lisp
+   (use-package ido-ubiquitous
+   :ensure t
+   :init (ido-ubiquitous-mode 1))
+   #+END_SRC
+** ido-yes-or-no
+   #+BEGIN_SRC emacs-lisp
+   (use-package ido-yes-or-no
+   :ensure t
+   :after ido
+   :init (ido-yes-or-no-mode 1))
+   #+END_SRC
+** ido-vertical-mode
+   #+BEGIN_SRC emacs-lisp
+   (use-package ido-vertical-mode
+   :ensure t
+   :after ido
+   :init (ido-vertical-mode 1))
+   #+END_SRC
 
 ** company
    #+BEGIN_SRC emacs-lisp
    (use-package company
    :ensure t
-   :config (add-hook 'after-init-hook 'global-company-mode))
+   :config (add-hook 'after-init-hook 'global-company-mode)
+           (setq company-idle-delay 0
+            company-minimum-prefix-length 2
+	    company-show-numbers t
+            company-selection-wrap-around t))
    #+END_SRC
-
+** company-dabbrev
+   #+BEGIN_SRC emacs-lisp
+   (use-package company-dabbrev
+   :config
+   (setf company-dabbrev-ignore-case 'keep-prefix
+         company-dabbrev-ignore-invisible t
+         company-dabbrev-downcase nil))
+   #+END_SRC
 ** smex
    #+BEGIN_SRC emacs-lisp
    (use-package smex
@@ -165,13 +193,83 @@
    :config (smex-initialize)
    :bind (("M-x" . smex)
           ("M-X" . smex-major-mode-commands)
-	  ("C-c C-c M-x" . execute-extended-command))
+	  ("C-c C-c M-x" . execute-extended-command)))
    #+END_SRC
 
+** magit
+   #+BEGIN_SRC emacs-lisp
+   (use-package magit
+   :ensure t
+   :bind ("C-x g" . magit-status)
+   :config (setq magit-completing-read-function 'magit-ido-completing-read))
+   #+END_SRC
 
+** magit-svn
+   #+BEGIN_SRC emacs-lisp
+   (use-package magit-svn
+   :after magit
+   :ensure t
+   :config (add-hook 'magit-mode-hook 'magit-svn-mode))
+   #+END_SRC
+** nose 
+   #+BEGIN_SRC emacs-lisp
+   (use-package nose
+   :ensure t)
+   #+END_SRC
+** evil-magit
+   #+BEGIN_SRC emacs-lisp
+   (use-package evil-magit 
+   :ensure t
+   :after (magit)
+   :config (evil-define-key evil-magit-state magit-mode-map "?" 'evil-search-backward))
+   #+END_SRC
+** org 
+   #+BEGIN_SRC emacs-lisp
+   (use-package org
+   :ensure t)
+   #+END_SRC
+** powerline 
+   #+BEGIN_SRC emacs-lisp
+   (use-package powerline
+   :ensure t
+   :config (powerline-center-evil-theme))
+   #+END_SRC
 
+** color-theme-sanityinc-tomorrow
+   #+BEGIN_SRC emacs-lisp
+   (use-package color-theme-sanityinc-tomorrow
+   :ensure t
+   :config (load-theme 'sanityinc-tomorrow-eighties t))
+   #+END_SRC
+** flycheck
+   #+BEGIN_SRC emacs-lisp
+   (use-package flycheck
+   :init (global-flycheck-mode)
+   :ensure t)
+   #+END_SRC
+** highlight-indentation
+   #+BEGIN_SRC emacs-lisp
+   (use-package highlight-indentation
+   :ensure t)
+   #+END_SRC
+** visual-regexp
+   #+BEGIN_SRC emacs-lisp
+   (use-package visual-regexp
+   :ensure t)
+   #+END_SRC
+** undo-tree
+   #+BEGIN_SRC emacs-lisp
+   (use-package undo-tree
+   :ensure t
+   :init (global-undo-tree-mode))
+   #+END_SRC
+** xclip 
+   #+BEGIN_SRC emacs-lisp
+   (use-package xclip
+   :ensure t
+   :init (xclip-mode 1))
+   #+END_SRC
 * Language Specific Packages
-
 ** Python
 *** elpy
    #+BEGIN_SRC emacs-lisp
@@ -181,20 +279,13 @@
    #+END_SRC
 
 ** Erlang
-*** erlang-start
+*** erlang
    #+BEGIN_SRC emacs-lisp
-   (use-package erlang-start
+   (use-package erlang
    :ensure t)
    #+END_SRC
 
 ** Go
-*** go-eldoc
-    *System Packages Required*: gocode
-   #+BEGIN_SRC emacs-lisp
-   (use-package go-eldoc
-   :ensure t)
-   #+END_SRC
- 
 *** go-mode
     *System Packages Required*: godef, goimports
     #+BEGIN_SRC emacs-lisp
@@ -209,9 +300,92 @@
 	    (add-hook 'go-mode-hook 'company-mode))
     #+END_SRC
 
+*** go-eldoc
+    *System Packages Required*: gocode
+   #+BEGIN_SRC emacs-lisp
+   (use-package go-eldoc
+   :ensure t)
+   #+END_SRC
+*** go-errcheck
+    *System Packages Required*: errcheck
+   #+BEGIN_SRC emacs-lisp
+   (use-package go-errcheck
+   :ensure t)
+   #+END_SRC
+
+*** go-snippets
+   #+BEGIN_SRC emacs-lisp
+   (use-package go-snippets
+   :ensure t)
+   #+END_SRC
+
+*** company-go
+    *System Packages Required*: gocode
+   #+BEGIN_SRC emacs-lisp
+   (use-package company-go
+   :ensure t)
+   #+END_SRC
+ 
+** C
+*** company-c-headers
+   #+BEGIN_SRC emacs-lisp
+   (use-package company-c-headers
+   :ensure t)
+   #+END_SRC
+** Elm
+*** elm-mode
+    *System Packages Required*: elm-oracle, elm-format
+   #+BEGIN_SRC emacs-lisp
+   (use-package elm-mode
+   :ensure t
+   :config ;;(elm-format-on-save t)
+           (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+	   (add-to-list 'company-backends 'company-elm))
+   #+END_SRC
+*** flycheck-elm
+   #+BEGIN_SRC emacs-lisp
+   (use-package flycheck-elm
+   :ensure t
+   :after (flycheck)
+   :config (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+   #+END_SRC
+** Web (HTML,PHP,...)
+*** company-web
+   #+BEGIN_SRC emacs-lisp
+   (use-package company-web
+   :ensure t)
+   #+END_SRC
+
+*** show-css
+   #+BEGIN_SRC emacs-lisp
+   (use-package show-css
+   :ensure t
+   :config
+   (defun sm/toggle-showcss()
+     "Toggle showcss-mode"
+     (interactive)
+     (if (derived-mode-p
+         'html-mode
+	 'nxml-mode
+	 'nxhtml-mode
+	 'web-mode
+	 'handlebars-mode)
+	(showcss-mode 'toggle)
+      (message "Not in an html mode")))
+  :bind ("\C-c\ \C-k" . sm/toggle-showcss))
+   #+END_SRC
+   
+** Shell 
+*** company-shell
+   #+BEGIN_SRC emacs-lisp
+   (use-package company-shell
+   :ensure t
+   :after company
+   :config (add-to-list 'company-backends 'company-shell))
 
 
-
+   #+END_SRC
+* End
 #+BEGIN_SRC emacs-lisp
 (provide 'init)
 ;;; init.el ends here
