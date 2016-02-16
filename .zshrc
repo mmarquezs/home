@@ -35,6 +35,7 @@ alias beep="aplay --quiet /usr/share/sounds/speech-dispatcher/test.wav" # Useful
 alias t="todo -d $HOME/.todo.cfg"
 alias tw="todo | grep @work"
 alias lgen="python -c 'import sys;import libgenapi;l=libgenapi.Libgenapi(\"http://gen.lib.rus.ec/\");print(l.search(sys.argv[1]))'"
+alias kvm="qemu-system-x86_64 -enable-kvm -cpu host"
 
 export TODOTXT_DEFAULT_ACTION=ls
 export EDITOR="nohup emacsclient -ca emacs> /dev/null 2>&1 &"
