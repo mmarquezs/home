@@ -63,7 +63,9 @@ antigen bundle Lokaltog/powerline powerline/bindings/zsh
 # Tell antigen that you're done.
 antigen apply
 
-
+# Search history based on what I have typed.
+bindkey -M vicmd "k" history-beginning-search-backward
+bindkey -M vicmd "j" history-beginning-search-forward
 ###################
 #VIM SETTINGS
 ###################
