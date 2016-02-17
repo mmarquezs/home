@@ -392,6 +392,14 @@
    :after company
    :config (add-to-list 'company-backends 'company-shell))
    #+END_SRC
+** Systemd Units
+*** systemd
+   #+BEGIN_SRC emacs-lisp
+   (use-package systemd
+   :ensure t
+   :after company
+   :config '(systemd-use-company-p t))
+   #+END_SRC
 * End
 #+BEGIN_SRC emacs-lisp
 (provide 'init)
