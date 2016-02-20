@@ -105,4 +105,5 @@ setopt listtypes      # When listing files that are possible completions,
                       # indicate their types with a trailing character.
 setopt nolistbeep     # No bell on ambiguous completion!!
 
-eval $(ssh-agent)
+# eval $(ssh-agent)
+eval `keychain --eval id_rsa`
