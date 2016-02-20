@@ -107,3 +107,6 @@ setopt nolistbeep     # No bell on ambiguous completion!!
 
 # eval $(ssh-agent)
 eval `keychain --eval id_rsa`
+
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
