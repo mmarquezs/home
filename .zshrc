@@ -110,3 +110,8 @@ eval `keychain --eval id_rsa`
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
+
+if ! pgrep "[x]cape" > /dev/null
+then
+    xcape -e 'Control_L=Escape'
+fi
