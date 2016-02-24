@@ -122,7 +122,6 @@ bar {
 	tray_output primary
 >
   position          top
-  #status_command i3status
   status_command py3status -i ~/.i3/py3status -n 10
   colors {
     separator #000000
@@ -163,9 +162,7 @@ exec --no-startup-id !!<\
      blueman,\
      terminator,\
      zathura,\
-     xcape -e 'Control_L=Escape',\
-     unclutter,\
-     synergyc 192.168.1.40\
+     unclutter\
 >
 
 ###############################################################################

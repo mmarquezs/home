@@ -24,3 +24,5 @@ exec setxkbmap -model pc104 -layout es
 if [ "morality" = $HOSTNAME ]; then
     exec synergyc 192.168.1.40
 fi;
+
+exec xcape -e 'Control_L=Escape'
