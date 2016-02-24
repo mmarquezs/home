@@ -47,10 +47,10 @@ bindsym $mod+!!1!7..9,0 \
 bindsym Pause workspace $WS2 
 
 # Move focused container to workspace
-bindsym $mod+Shift+!!1!1..5 \
-	move container to workspace $WS!!1!1..5
-bindsym $mod+Shift+!!1!6..9,0 \
-	move container to workspace !!1!6..10
+bindsym $mod+Shift+!!1!1..6 \
+	move container to workspace $WS!!1!1..6
+bindsym $mod+Shift+!!1!7..9,0 \
+	move container to workspace !!1!7..10
 # reload the configuration file
 bindsym $mod+Shift+c exec i3bang; reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -100,13 +100,6 @@ bindsym XF86AudioPause exec --no-startup-id bash $HOME/bin/key-XF86AudioPlay.sh
 
 bindsym XF86AudioNext --release exec --no-startup-id sh $HOME/bin/key-XF86AudioNext.sh
 bindsym XF86AudioPrev --release exec --no-startup-id sh $HOME/bin/key-XF86AudioPrev.sh
-# bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-# bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-# bindsym XF86AudioMute exec amixer -q set Master toggle
-# bindsym XF86AudioRaiseVolume exec volume_ctl up
-# bindsym XF86AudioLowerVolume exec volume_ctl down
-# bindsym XF86AudioMute exec volume_ctl mute
-# bindsym Print exec printscreen
 
 ###############################################################################
 #                                    CONF.                                    #
@@ -129,7 +122,6 @@ bar {
 	tray_output primary
 >
   position          top
-  #status_command i3status
   status_command py3status -i ~/.i3/py3status -n 10
   colors {
     separator #000000
@@ -170,9 +162,7 @@ exec --no-startup-id !!<\
      blueman,\
      terminator,\
      zathura,\
-     xcape -e 'Control_L=Escape',\
-     unclutter,\
-     synergyc 192.168.1.40\
+     unclutter\
 >
 
 ###############################################################################

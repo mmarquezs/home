@@ -28,6 +28,7 @@
     palette = "#000000:#f78d8c:#a8d3a9:#ffd479:#78aad6:#d6acd6:#76d4d6:#ffffff:#000000:#f78d8c:#a8d3a9:#ffd479:#78aad6:#d6acd6:#76d4d6:#ffffff"
     scrollbar_position = hidden
     show_titlebar = False
+    use_system_font = False
   [[tomorrow-night]]
     background_color = "#1d1f21"
     background_image = None

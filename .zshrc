@@ -12,6 +12,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+KEYTIMEOUT=1
 plugins=(git colorize themes)
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -104,4 +105,8 @@ setopt listtypes      # When listing files that are possible completions,
                       # indicate their types with a trailing character.
 setopt nolistbeep     # No bell on ambiguous completion!!
 
-eval $(ssh-agent)
+# eval $(ssh-agent)
+eval `keychain --eval id_rsa`
+
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
