@@ -39,8 +39,8 @@ alias lgen="python -c 'import sys;import libgenapi;l=libgenapi.Libgenapi(\"http:
 alias kvm="qemu-system-x86_64 -enable-kvm -cpu host"
 
 export TODOTXT_DEFAULT_ACTION=ls
-export EDITOR="nohup emacsclient -ca emacs> /dev/null 2>&1 &"
-export ALTERNATE_EDITOR="vim"
+# export EDITOR="nohup emacsclient -ca emacs> /dev/null 2>&1 &"
+# export ALTERNATE_EDITOR="vim"
 source ~/.zshrc.d/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -110,3 +110,8 @@ eval `keychain --eval id_rsa`
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
+
+if ! pgrep "[x]cape" > /dev/null
+then
+    xcape -e 'Control_L=Escape'
+fi

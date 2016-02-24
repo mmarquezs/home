@@ -250,7 +250,6 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
-  flycheck-checker-error-threshold 600 
   )
 
 (defun dotspacemacs/user-config ()
