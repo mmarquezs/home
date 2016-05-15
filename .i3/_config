@@ -28,7 +28,9 @@ gaps outer -1
 bindsym $mod+Return exec 3-sensible-terminal # start a terminal (more info: http://goo.gl/SeUInM )
 bindsym $mod+Shift+q kill	# kills focused window (not forcefully)
 # start dmenu
-bindsym $mod+d exec dmenu_run -b -i -nb "#002b36" -nf "#eee8d5" -sb "#cb4b16" -sf "#fdf6e3" -fn "envypn-8"  "$@"
+# bindsym $mod+d exec dmenu_run -b -i -nb "#002b36" -nf "#eee8d5" -sb "#cb4b16" -sf "#fdf6e3" -fn "envypn-8"  "$@"
+# start rofi
+bindsym $mod+d exec "rofi -show run"
 #Changes window focus Vim-Style and "Arrows-Style".
 bindsym $mod+!!<h,j,k,l,Left,Down,Up,Right> \ 
   focus !!<left,down,up,right,left,down,up,right>

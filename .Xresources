@@ -1,0 +1,12 @@
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.fullscreen: true
+rofi.font: Source Code Pro 16
+rofi.padding: 300
+rofi.opacity: 85
+rofi.color-enabled: true
+rofi.color-window: #142e37, #142e37, #142e37
+rofi.color-normal: #142e37, #9ad274, #142e37, #9ad274, #142e37
+rofi.color-active: #142e37, #9ad274, #142e37, #9ad274, #142e37
+rofi.color-urgent: #142e37, #9ad274, #142e37, #9ad274, #142e37
