@@ -51,7 +51,7 @@ antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle fasd
-antigen bundle last-working-dir
+# antigen bundle last-working-dir
 antigen bundle command-not-found
 
 # Syntax highlighting bundle.
