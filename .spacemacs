@@ -26,9 +26,9 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     spacemacs-helm
+     ;; spacemacs-helm
      auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      git
      markdown
@@ -41,6 +41,8 @@ values."
      version-control
      go
      html
+     python
+     pdf-tools
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -130,7 +132,7 @@ values."
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
    ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-command-key "SPC"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -267,7 +269,13 @@ layers configuration. You are free to put any user code."
                 (run-at-time
                  "0.5 sec" nil 'delete-windows-on
                  (get-buffer-create "*compilation*"))
-                (message "No Compilation Errors!"))))) 
+                (message "No Compilation Errors!")))))
+  ;; Set tab width to 4.
+  (setq indent-tabs-mode nil)
+  (setq tab-width 4)
+  (setq python-indent 4)
+  (setq python-indent-guess-indent-offset nil)
+  ;; (python-guess-indent-offset nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
