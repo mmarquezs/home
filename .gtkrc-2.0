@@ -1,18 +1,57 @@
-# DO NOT EDIT! This file will be overwritten by LXAppearance.
-# Any customization should be done in ~/.gtkrc-2.0.mine instead.
+gtk-icon-theme-name = "Paper"
+gtk-theme-name = "Arc"
+gtk-font-name = "DejaVu Sans 11"
+style "pcmanfm" {
+  base[NORMAL] = "#383C4A"
+  base[ACTIVE] = "#383C4A"
+  text[NORMAL] = "#BBBBBB"
+  bg[NORMAL] = "#383C4A"
+  bg[PRELIGHT] = "#383C4A"
+  fg[PRELIGHT] = "#383C4A"
+  fg[NORMAL] = "#383C4A"
+  fg[INSENSITIVE] = "#383C4A"
+  bg[INSENSITIVE] = "#383C4A"
+}
+# pixmap_path "/usr/share/themes/Arc-Dark/gtk-2.0/"
+# style "dark-button" {
 
-include "/home/marcmarquez/.gtkrc-2.0.mine"
-gtk-theme-name="Arc"
-gtk-icon-theme-name="Numix"
-gtk-font-name="Sans Serif  9"
-gtk-cursor-theme-name="Adwaita"
-gtk-cursor-theme-size=0
-gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
-gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
-gtk-button-images=0
-gtk-menu-images=0
-gtk-enable-event-sounds=1
-gtk-enable-input-feedback-sounds=1
-gtk-xft-antialias=1
-gtk-xft-hinting=1
-gtk-xft-hintstyle="hintfull"
+#   xthickness = 4
+#   ythickness = 4
+#   engine "pixmap" {
+#     image {
+#       function = BOX
+#       state = NORMAL
+#       file = "assets/button.png"
+#       border = { 4, 4, 4, 4 }
+#       stretch = TRUE
+#     }
+
+#     image {
+#       function = BOX
+#       state = PRELIGHT
+#       file = "assets/button-hover.png"
+#       border = { 4, 4, 4, 4 }
+#       stretch = TRUE
+#     }
+
+#     image {
+#       function = BOX
+#       state = ACTIVE
+#       file = "assets/button-active.png"
+#       border = { 4, 4, 4, 4 }
+#       stretch = TRUE
+#     }
+
+#     image {
+#       function = BOX
+#       state = INSENSITIVE
+#       file = "assets/button-insensitive.png"
+#       border = { 4, 4, 4, 4 }
+#       stretch = TRUE
+#     }
+#   }
+# }
+widget_class    "*FmSidePane*"    style "pcmanfm"
+# widget_class    "*GtkButton*"    style "dark-button"
+# widget_class    "*FmPlacesView*"    style "pcmanfm"
+# widget_class    "*FmPlacesView*"    style "pcmanfm"
