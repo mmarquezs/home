@@ -23,7 +23,7 @@
     background_image = None
     background_type = transparent
     cursor_color = "#cccccc"
-    font = Source Code Pro Medium 8
+    font = Source Code Pro Semi-Bold 9
     foreground_color = "#a8a8a8"
     palette = "#000000:#f78d8c:#a8d3a9:#ffd479:#78aad6:#d6acd6:#76d4d6:#ffffff:#000000:#f78d8c:#a8d3a9:#ffd479:#78aad6:#d6acd6:#76d4d6:#ffffff"
     scrollbar_position = hidden

@@ -134,7 +134,9 @@ bar {
   status_command py3status -i ~/.i3/py3status -n 10
   colors {
     separator #000000
-    background #2d2d2d
+    # background #2d2d2d
+    # background #2A0A12
+    background #0B0B20
     statusline #268bd2
     #focused_workspace #fdf6e3 #859900 #fdf6e3
     #active_workspace #fdf6e3 #6c71c4 #fdf6e3
@@ -158,7 +160,7 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 exec --no-startup-id !!<\
      "i3-msg 'workspace 1:   TERM; append_layout /home/marcmarquez/.i3/workspace-1.json'",\
-     firefox,\
+     # firefox,\
      udiskie,\
      compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8,\
      /home/marcmarquez/bin/wallpaper-reddit,\
@@ -166,11 +168,12 @@ exec --no-startup-id !!<\
      emacs --daemon,\
      volwheel,\
      nm-applet,\
-     synergys,\
+     # synergys,\
      dunst,\
-     blueman,\
+     blueman-applet,\
      terminator,\
-     zathura,\
+     synergyc 192.168.1.40,\
+     # zathura,\
      unclutter\
 >
 
