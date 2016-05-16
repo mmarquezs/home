@@ -28,7 +28,7 @@ values."
      ;; ----------------------------------------------------------------
      spacemacs-helm
      auto-completion
-     ;; better-defaults
+     better-defaults
      emacs-lisp
      git
      markdown
@@ -41,6 +41,9 @@ values."
      version-control
      go
      html
+     python
+     pdf-tools
+     ;; +tools/pdf-tools
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
