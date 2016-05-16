@@ -115,3 +115,14 @@ if ! pgrep "[x]cape" > /dev/null
 then
     xcape -e 'Control_L=Escape'
 fi
+
+# Fix for emacs tramps and similar
+if [[ "$TERM" == "dumb" ]]
+then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
+fi
