@@ -1,0 +1,15 @@
+!Filter
+name: irssi
+rules:
+- !Secret
+  key: passwd
+  description: IRC Passwords
+  numbered: true
+  regex: IDENTIFY(\s*)\w+
+  substitute: IDENTIFY\1(?#Key)
+- !Secret
+  key: irc_token
+  description: IRC Passwords
+  numbered: true
+  regex: (?i)ENTER(.*\s+)\w+
+  substitute: ENTER\1(?#Key)
