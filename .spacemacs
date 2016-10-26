@@ -45,6 +45,7 @@ values."
      html
      python
      pdf-tools
+     ipython-notebook
      java
      )
    ;; List of additional packages that will be installed without being
@@ -275,10 +276,15 @@ layers configuration. You are free to put any user code."
                  (get-buffer-create "*compilation*"))
                 (message "No Compilation Errors!")))))
   ;; Set tab width to 4.
-  (setq indent-tabs-mode nil)
-  (setq tab-width 4)
-  (setq python-indent 4)
-  (setq python-indent-guess-indent-offset nil)
+  ;; (setq indent-tabs-mode nil)
+  ;; (setq tab-width 4)
+  ;; (setq python-indent 4)
+  ;; (setq python-indent-guess-indent-offset nil)
+  ;; (add-hook 'python-mode-hook
+  ;;           (lambda ()
+  ;;             (setq indent-tabs-mode t)
+  ;;             (setq python-indent 4)
+  ;;             (setq tab-width 4)))
   ;; (python-guess-indent-offset nil)
 
   ;; Configuration for java layer
