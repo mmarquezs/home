@@ -285,6 +285,9 @@ layers configuration. You are free to put any user code."
   ;;             (setq indent-tabs-mode t)
   ;;             (setq python-indent 4)
   ;;             (setq tab-width 4)))
+  ;; Changed the edit mode of org to the same window.
+  (setq org-src-window-setup 'current-window)
+
   ;; (python-guess-indent-offset nil)
 
   ;; Configuration for java layer
