@@ -45,6 +45,7 @@ values."
      html
      python
      pdf-tools
+     java
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -279,6 +280,10 @@ layers configuration. You are free to put any user code."
   (setq python-indent 4)
   (setq python-indent-guess-indent-offset nil)
   ;; (python-guess-indent-offset nil)
+
+  ;; Configuration for java layer
+  (setq eclim-eclipse-dirs "/usr/bin/eclipse"
+        eclim-executable "/usr/lib/eclipse/plugins/org.eclim_2.5.0/bin/eclim")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
