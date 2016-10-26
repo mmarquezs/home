@@ -27,6 +27,15 @@ PATH="/usr/local/sbin:$PATH"
 [ -d "$HOME/.go/bin" ] && PATH="$HOME/.go/bin:$PATH"
 [ -d "$HOME/.gem/ruby/2.3.0/bin" ] && PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
+anacondactl() {
+    case $1 in
+        start) OLD_PATH=$PATH ; PATH=/opt/anaconda/bin:$PATH ;;
+        stop)  PATH=$OLD_PATH ;;
+        status) if [ $(echo $PATH | grep anaconda | wc -l) -gt 0 ] ; then echo "Anaconda python" ; else echo "Native python" ; fi ;;
+        *) echo "Usage: anacondactl [start,stop,status]" ;;
+    esac
+}
+
 export HOST			# Added so it allows i3bang to set a configuration or an other based on the hostname. 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export GOPATH="$HOME/.go"
