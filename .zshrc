@@ -25,6 +25,7 @@ PATH="/usr/local/sbin:$PATH"
 [ -d "/usr/bin/core_perl/" ] && PATH="/usr/core_perl/:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.go/bin" ] && PATH="$HOME/.go/bin:$PATH"
+[ -d "$HOME/.gem/ruby/2.3.0/bin" ] && PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
 export HOST			# Added so it allows i3bang to set a configuration or an other based on the hostname. 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
