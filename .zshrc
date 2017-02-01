@@ -160,3 +160,4 @@ then
     unfunction preexec
     PS1='$ '
 fi
+eval "$(fasd --init auto)"
