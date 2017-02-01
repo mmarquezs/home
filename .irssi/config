@@ -60,6 +60,20 @@ servers = (
     port = "6697";
     use_ssl = "yes";
     ssl_verify = "no";
+  },
+  {
+    address = "irc.opentrackers.org";
+    chatnet = "OpenTrackers";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "no";
+  },
+  {
+    address = "irc.morethan.tv";
+    chatnet = "MoreThan.tv";
+    port = "6669";
+    use_ssl = "yes";
+    ssl_verify = "no";
   }
 );
 
@@ -152,6 +166,11 @@ chatnets = {
     nick = "XTornado";
     autosendcmd = "/^MSG NickServ IDENTIFY $DotSecrets: passwd_3$; /^MSG Drone ENTER #what.cd,#music-pre,#what.cd-announce XTornado $DotSecrets: irc_token_3$";
   };
+  OpenTrackers = { type = "IRC"; nick = "XTornado"; };
+  "MoreThan.tv" = {
+                type = "IRC";
+                nick = "XTornado";
+                };
 };
 
 channels = (
@@ -432,5 +451,6 @@ settings = {
 };
 ignores = (
   { level = "ALL"; },
-  { level = "ALL"; exception = "yes"; channels = ( "#announce" ); }
+  { level = "ALL"; exception = "yes"; channels = ( "#announce" ); },
+  { level = "ALL"; exception = "yes"; channels = ( "#netsec" ); }
 );
