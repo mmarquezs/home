@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+EDITOR="emacsclient -nw -a nano"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -90,6 +91,11 @@ git_custom_status() {
 	echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
     fi
 }
+
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+
 #####
 # Bindings
 #####
